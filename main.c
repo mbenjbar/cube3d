@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 22:20:22 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/09 22:41:21 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,10 @@ int	main(int argc, char **argv)
 	printf("%d\n", map.grid_lines_count);
 	printf("%d\n", map.has_ceiling);
 	printf("%d\n", map.has_floor);
-	printf("%d\n", map.has_ea);
-	printf("%d\n", map.has_no);
-	printf("%d\n", map.has_so);
-	printf("%d\n", map.has_we);
+	printf("%s\n", map.ea);
+	printf("%s\n", map.no);
+	printf("%s\n", map.so);
+	printf("%s\n", map.we);
 	printf("%d\n", map.map_width);
 	printf("%c\n", map.player_dir);
 	printf("%f\n", map.player_x);

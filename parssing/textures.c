@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imiqor <imiqor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:59 by imiqor            #+#    #+#             */
-/*   Updated: 2025/09/21 16:35:08 by imiqor           ###   ########.fr       */
+/*   Updated: 2025/10/09 22:40:27 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ void	assign_texture(t_map *map,char *line, char **dest, char *id)
 	path = line + ft_strlen(id);
 	while (*path == ' ')
 		path++;
-	clean = trim_spaces_end(path);
-	check_path(clean);
-	*dest = ftt_strdup(clean);
-	if (!*dest)
-		error_exit("Malloc failed for texture");
+	*dest = trim_spaces_end(path);
+	check_path(*dest);
 }
 
 
