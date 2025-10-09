@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 22:41:21 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/09 22:56:32 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,10 @@ int	main(int argc, char **argv)
 		printf("%s\n", map.map_grid[i]);
 		i++;
 	}
+
+	// everything now is fine with parssing so let's go
+
+	game_init(&game);
 	// init_game(&game, &map);
 	// game.map.map_grid[(int)game.map.player_y][(int)game.map.player_x] = '0';
 	// mlx_loop_hook(game.mlx, render_frame, &game);

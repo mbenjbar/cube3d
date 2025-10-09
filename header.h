@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 22:24:42 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/09 23:12:18 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ typedef struct s_gc
 
 typedef struct s_map
 {
-	int			line_count;
+	int			line_count; // line count of whole map file
 	int			grid_lines_count; //lines count of the pure map
-	char		**map_two_d;//this the entire map file including textures and colors
-	char		**map_grid;//this is the pure map
+	int			map_width; //width of pure map
+	int			map_height; //height of pure map
+	char		**map_two_d; //this the entire map file
+	char		**map_grid; //this is the pure map
 	float		player_x;
 	float		player_y;
 	char		player_dir;
-	int			map_width;//width of pure map
-	int			map_height;//height of pure map
 	char		*no;
 	char		*so;
 	char		*we;
@@ -70,33 +70,52 @@ typedef struct s_map
 	int ceiling_r, ceiling_g, ceiling_b;
 }				t_map;
 
+typedef	struct s_distance
+{
+	double	hori_hit_x;
+	double	x_hori_step;
+	double	hori_hit_y;
+	double	y_hori_step;
+
+	double	verti_hit_x;
+	double	x_verti_step;
+	double	verti_hit_y;
+	double	y_verti_step;
+	
+	double	ahx;
+	double	ahy;
+	double	avx;
+	double	avy;
+} t_distance;
+
+
 typedef struct s_game
 {
-	void *mlx; // MLX connection
-	void *win; // Window
+	void		*mlx;
+	void 		*win;
 	int			win_width;
 	int			win_height;
-	float angle; //depends on what direction the player is facing
-	float cos_angle;
-	float sin_angle;
-	float ray_x;
-	float ray_y;
-	float angle_speed;
-	float move_speed;
+	void		*img;
+	t_map 		map;
+	char		**grid;
+	double		player_x;
+	double		player_y;
+	double		angle;
+	double		fov;
+	double		rotation_angle;
+	t_distance	*distance;
+	double		height_wall;
+
 	bool  key_up;
     bool  key_down;
     bool  key_left;
     bool  key_right;
     bool  rot_left;
     bool  rot_right;
-	t_map map; // Map data you already parsed
-	 void    *img;           // ↖ your drawing surface
     char    *data_addr;     // ↖ pointer to its pixel data
     int     bpp;            // ↖ bits per pixel
     int     line_len;       // ↖ bytes per scanline
     int     endian;   
-	double		player_x;
-	double		player_y;
 	double dir_x; // Player direction vector (for raycasting)
 	double		dir_y;
 	double plane_x; // 2D camera plane
@@ -106,7 +125,9 @@ typedef struct s_game
 	void		*wall_we;
 	void		*wall_ea;
 }				t_game;
-/******  SPLIT   ****** */
+
+
+
 char			*ftt_free(char **arr);
 char			*ft_strncopy(char *str, int start, int end);
 int				count_word(char *args, char sep);
@@ -166,5 +187,7 @@ void	load_images(t_game *game, t_map *map);
 /******  LOAD_IMAGES ****** */
 void	init_game(t_game *game, t_map *map);
 
+
+/******  Raycasting Simo   ****** */
 
 #endif
