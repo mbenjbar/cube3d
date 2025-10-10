@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:50:22 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:53:52 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,15 +187,18 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-	// everything now is fine with parssing so let's go
+	// 				everything now is fine with parssing so let's go		//
+	
 	game.map = &map;
 	game_init(&game);
+	mlx_hook(game.win, 17, 0, exiter, &game);
 	
 
 	// mlx_loop_hook(game.mlx, render_frame, &game);
-	mlx_hook(game.win, 17, 0, exiter, &game);
 	// mlx_hook(game.win, 2, 1L << 0, key_press, &game);
 	// mlx_hook(game.win, 3, 1L << 1, key_release, &game);
+
+	
 	mlx_loop(game.mlx);
 	ft_gc(0, 'f');
 	return (0);
