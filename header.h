@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 23:12:18 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:48:28 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define SPACE 32
 #define LEFT_ARROW  65361   // XK_Left
 #define RIGHT_ARROW 65363   // XK_Right
+# define WINDOW_WIDTH 1600
+# define WINDOW_HEIGHT 800
 typedef struct s_state
 {
 	int			i;
@@ -55,6 +57,7 @@ typedef struct s_map
 	int			grid_lines_count; //lines count of the pure map
 	int			map_width; //width of pure map
 	int			map_height; //height of pure map
+	int			start_of_map;
 	char		**map_two_d; //this the entire map file
 	char		**map_grid; //this is the pure map
 	float		player_x;
@@ -89,6 +92,17 @@ typedef	struct s_distance
 } t_distance;
 
 
+typedef struct s_texture
+{
+	void	*textu;
+	char	*address;
+	int		endian;
+	int		width;
+	int		height;
+	int		lenght;
+	int		bpp;
+}		t_texture;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -96,34 +110,38 @@ typedef struct s_game
 	int			win_width;
 	int			win_height;
 	void		*img;
-	t_map 		map;
+	t_map 		*map;
 	char		**grid;
+	int			map_height;
 	double		player_x;
 	double		player_y;
 	double		angle;
 	double		fov;
 	double		rotation_angle;
+	double		wall_distance;
 	t_distance	*distance;
 	double		height_wall;
-
-	bool  key_up;
-    bool  key_down;
-    bool  key_left;
-    bool  key_right;
-    bool  rot_left;
-    bool  rot_right;
-    char    *data_addr;     // ↖ pointer to its pixel data
-    int     bpp;            // ↖ bits per pixel
-    int     line_len;       // ↖ bytes per scanline
-    int     endian;   
-	double dir_x; // Player direction vector (for raycasting)
-	double		dir_y;
-	double plane_x; // 2D camera plane
+    char    	*data_addr;
+    int     	bpp;
+    int     	line_len;
+    int     	endian;
 	double		plane_y;
+	int  		key_up;
+    int  		key_down;
+    int  		key_left;
+    int  		key_right;
+    int  		rot_left;
+    int  		rot_right;
+	t_texture	textures[4];
+	
 	void		*wall_no;
 	void		*wall_so;
 	void		*wall_we;
 	void		*wall_ea;
+
+	double dir_x; // Player direction vector (for raycasting)
+	double		dir_y;
+	double plane_x; // 2D camera plane
 }				t_game;
 
 
@@ -165,7 +183,6 @@ void			parse_map(t_map *map, char **content, int start);
 char			*ft_ssstrjoin(char *save, char *buff);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_strcmp(char *s1, char *s2);
-void			error_exit(char *msg);
 int				is_blank(char *s);
 void			check_no_blank_lines_inside_map(char **content, int start);
 char			*ftt_strdup(const char *s1);
@@ -186,8 +203,9 @@ void	image_failed_to_load(t_game *game);
 void	load_images(t_game *game, t_map *map);
 /******  LOAD_IMAGES ****** */
 void	init_game(t_game *game, t_map *map);
+void	error_exit(char *msg, t_game *game);
 
 
 /******  Raycasting Simo   ****** */
-
+void    game_init(t_game *game);
 #endif

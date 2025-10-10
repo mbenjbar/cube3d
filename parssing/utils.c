@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:52:08 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 22:07:57 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:34:00 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,6 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	error_exit(char *msg)
-{
-	write(2, "Error ", 7);
-	write(2, msg, ft_strlen(msg));
-	write(2, "\n", 1);
-	ft_gc(0,'f');
-	
-	exit(EXIT_FAILURE);
-}
 char	*ftt_strdup(const char *s1)
 {
 	char	*str2;

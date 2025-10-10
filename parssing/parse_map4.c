@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 16:24:50 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 21:41:11 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:46:03 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	validate_walls(t_map *map)
 				if (is_not_sorrounded(map, i ,j))
                     {
                         //ftt_free(map->map_two_d);//i think it s causing double free
-					    error_exit("Error\nMap is not closed around");
+					    error_exit("Map is not closed around", NULL);
                     }
 			}
 		}

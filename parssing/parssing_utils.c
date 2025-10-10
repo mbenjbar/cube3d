@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 22:53:07 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 21:34:20 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:50:09 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	check_no_blank_lines_inside_map(char **content, int start)
 			if (map_started)
 			{
 				ftt_free(content);
-				error_exit("Map contains empty line inside");
+				error_exit("Map contains empty line inside", NULL);
 			}
 		}
 		else

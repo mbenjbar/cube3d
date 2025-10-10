@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:03 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 21:34:49 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:03:02 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	check_map_content(char **content, t_map *map)
 	while (content[i] && ft_strcmp(content[i], "\n") == 0)
 		i++;
 	if (!content[i])
-		write(2, "Map doesn't exist!\n", 20);
+		error_exit("Map doesn't exist!\n", NULL);
+	map->start_of_map = i + 1;
 	check_no_blank_lines_inside_map(content, i);
 	parse_map(map, content, i);
 }

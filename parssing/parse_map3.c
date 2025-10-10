@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:47 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 21:40:07 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:44:55 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void validate_map_chars(t_map *map)
         {
             if (!is_valid_map_char(line[j]))
 			{
-                error_exit("Invalid character in map");
+                error_exit("Invalid character in map", NULL);
 			}
             if (line[j] == 'N' || line[j] == 'S' || line[j] == 'E' || line[j] == 'W')
                 player_count++;
@@ -45,5 +45,5 @@ void validate_map_chars(t_map *map)
 		i++;
     }
     if (player_count != 1)
-        error_exit("Map must have exactly one player start");
+        error_exit("Map must have exactly one player start", NULL);
 }

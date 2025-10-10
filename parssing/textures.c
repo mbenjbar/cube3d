@@ -6,11 +6,9 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:59 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 22:40:27 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 21:57:15 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include"../header.h"
 
@@ -21,7 +19,7 @@ void	check_path(char *path)
 	// path[ft_strlen(path) - 1] = 0;
 	if (!*path || access(path, F_OK) != 0)
 	{
-		error_exit("Texture path not accessible");
+		error_exit("Texture path not accessible", NULL);
 	}
 }
 char	*trim_spaces_end(char *str)
@@ -43,16 +41,15 @@ char	*trim_spaces_end(char *str)
 void	assign_texture(t_map *map,char *line, char **dest, char *id)
 {
 	char	*path;
-	char *clean;
 
 	if(ft_strcmp(id,"NO") == 0 && map->has_no)
-		error_exit("Duplicate NO texture");
+		error_exit("Duplicate NO texture", NULL);
 	else if(ft_strcmp(id,"SO") == 0 && map->has_so)
-		error_exit("Duplicate SO texture");
+		error_exit("Duplicate SO texture", NULL);
 	else if(ft_strcmp(id,"WE") == 0 && map->has_we)
-		error_exit("Duplicate WE texture");
+		error_exit("Duplicate WE texture", NULL);
 	else if(ft_strcmp(id,"EA") == 0 && map->has_ea)
-		error_exit("Duplicate EA texture");
+		error_exit("Duplicate EA texture", NULL);
 
 	path = line + ft_strlen(id);
 	while (*path == ' ')
@@ -85,5 +82,5 @@ void	parse_textures_and_colors(char **lines, int *i, t_map *map)
 	}
 	if (!(map->has_no && map->has_so && map->has_we && map->has_ea
 			&& map->has_floor && map->has_ceiling))
-		error_exit("Missing textures or colors");
+		error_exit("Missing textures or colors", NULL);
 }
