@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:44:17 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:58:30 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,6 @@ typedef struct s_game
 }				t_game;
 
 
-
 char			*ft_strncopy(char *str, int start, int end);
 int				count_word(char *args, char sep);
 void			init_state(t_state *state, char *args, char sep);
@@ -181,7 +180,6 @@ void			validate_walls(t_map *map);
 int				ft_check_is_player(char c);
 void			parse_map(t_map *map, char **content, int start);
 /******  UTILS  ****** */
-int				ft_strcmp(char *s1, char *s2);
 int				ft_strcmp(char *s1, char *s2);
 int				is_blank(char *s);
 void			check_no_blank_lines_inside_map(char **content, int start);
