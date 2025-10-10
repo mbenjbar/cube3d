@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:14:38 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:50:22 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int	main(int argc, char **argv)
 	memset(&map, 0, sizeof(map));
 	memset(&game, 0, sizeof(game));
 	parssing(&map, argc, argv);
-	//          print all information i got from parssing to ensure everything is good 
+	//          print all information i got from parssing to ensure everything is good  //
 
 	printf("%d\n", map.line_count);
 	printf("%d\n", map.grid_lines_count);
@@ -163,6 +163,12 @@ int	main(int argc, char **argv)
 	printf("%s\n", map.no);
 	printf("%s\n", map.so);
 	printf("%s\n", map.we);
+	printf("%d\n", map.floor_b);
+	printf("%d\n", map.floor_g);
+	printf("%d\n", map.floor_r);
+	printf("%d\n", map.ceiling_b);
+	printf("%d\n", map.ceiling_g);
+	printf("%d\n", map.ceiling_r);
 	printf("%d\n", map.map_width);
 	printf("%c\n", map.player_dir);
 	printf("%f\n", map.player_x);

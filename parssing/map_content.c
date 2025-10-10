@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:24 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/09 22:17:04 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:27:57 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,7 @@ void	get_cub_content(char *argv, t_map *map)
 	map->line_count = len;
 	map->map_two_d = ft_gc(sizeof(char *) * (len + 1), 'm');
 	if (!map->map_two_d)
-	{
-		write(2, "Malloc Error: map_cotent.c: 52\n", 32);
-		ft_gc(0, 'f');
-		exit(1);
-	}
+		error_exit("Malloc Error", NULL);
 	fd = open(argv, O_RDONLY);
 	map->map_two_d[i] = get_next_line(fd, 0);
 	while (i < len && map->map_two_d[i++])

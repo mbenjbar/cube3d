@@ -6,25 +6,11 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 00:27:53 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 21:51:44 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:44:23 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
-
-char	*ftt_free(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i] != NULL)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-	return (NULL);
-}
 
 char	*ft_strncopy(char *str, int start, int end)
 {

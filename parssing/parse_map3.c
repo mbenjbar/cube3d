@@ -6,11 +6,12 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:47 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 21:44:55 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:48:39 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"../header.h"
+
 int is_valid_map_char(char c)
 {
 	if(c == '0' || c == '1' || c == ' ' || c == 'N' || c == 'S' || c == 'E' || c == 'W')

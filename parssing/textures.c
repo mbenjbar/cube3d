@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:59 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 21:57:15 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:36:00 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	check_path(char *path)
 {
 	if (path == NULL)
 		return ;
-	// path[ft_strlen(path) - 1] = 0;
 	if (!*path || access(path, F_OK) != 0)
 	{
 		error_exit("Texture path not accessible", NULL);

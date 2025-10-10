@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:10 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 21:54:56 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:31:53 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ int	parse_rgb(char *line, int *r, int *g, int *b)
 	while (splited_line[count])
 		count++;
 	if (count != 3)
-	{
 		return (0);
-	}
 	*r = ft_atoi(splited_line[0]);
 	*g = ft_atoi(splited_line[1]);
 	*b = ft_atoi(splited_line[2]);
@@ -50,7 +48,6 @@ void	set_floor_color(t_map *map, char *line)
 	map->floor_r = r;
 	map->floor_g = g;
 	map->floor_b = b;
-	map->has_floor = 1;
 }
 
 void	set_ceiling_color(t_map *map, char *line)
@@ -66,5 +63,4 @@ void	set_ceiling_color(t_map *map, char *line)
 	map->ceiling_r = r;
 	map->ceiling_g = g;
 	map->ceiling_b = b;
-	map->has_ceiling = 1;
 }
