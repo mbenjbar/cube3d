@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:58:30 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/10 22:59:43 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ typedef struct s_game
 	double plane_x; // 2D camera plane
 }				t_game;
 
-
+/******  Splits  ****** */
 char			*ft_strncopy(char *str, int start, int end);
 int				count_word(char *args, char sep);
 void			init_state(t_state *state, char *args, char sep);
@@ -160,7 +160,7 @@ void			parse_textures_and_colors(char **lines, int *i, t_map *map);
 int				parse_rgb(char *line, int *r, int *g, int *b);
 void			set_floor_color(t_map *map, char *line);
 void			set_ceiling_color(t_map *map, char *line);
-/******  ARGV1  ****** */
+/******  Parssing  ****** */
 void			parssing(t_map *map, int argc, char **argv);
 void			check_map_content(char **content, t_map *map);
 void			check_if_file_exist(char *argv);
