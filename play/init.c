@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 20:35:01 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/10 22:23:43 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/11 09:51:03 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ void    game_init(t_game *game)
     game->distance = ft_gc(sizeof(t_distance), 'm');
     game->mlx = mlx_init();
     texture_addr_loading(game);
-    game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "sub3D");
+    game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");
 }

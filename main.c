@@ -6,64 +6,11 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:53:52 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/11 09:43:38 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-// void	ft_free_image(t_game *game)
-// {
-// 	if (!game)
-// 		return ;
-// 	if (game->img)
-// 		mlx_destroy_image(game->mlx, game->img);
-// 	if (game->win)
-// 		mlx_destroy_window(game->mlx, game->win);
-// 	if (game->mlx)
-// 	{
-// 		mlx_destroy_display(game->mlx);
-// 		// free(game->mlx);
-// 	}
-// 	ft_gc(0, 'f');
-// 	exit(0);
-// }
-
-// int	key_press(int key, t_game *g)
-// {
-// 	if (key == ESC_KEY)
-// 		ft_free_image(g);
-// 	else if (key == W)
-// 		g->key_up = true;
-// 	else if (key == S)
-// 		g->key_down = true;
-// 	else if (key == A)
-// 		g->key_left = true;
-// 	else if (key == D)
-// 		g->key_right = true;
-// 	else if (key == LEFT_ARROW)
-// 		g->rot_left = true;
-// 	else if (key == RIGHT_ARROW)
-// 		g->rot_right = true;
-// 	return (0);
-// }
-
-// int	key_release(int key, t_game *g)
-// {
-// 	if (key == W)
-// 		g->key_up = false;
-// 	else if (key == S)
-// 		g->key_down = false;
-// 	else if (key == A)
-// 		g->key_left = false;
-// 	else if (key == D)
-// 		g->key_right = false;
-// 	else if (key == LEFT_ARROW)
-// 		g->rot_left = false;
-// 	else if (key == RIGHT_ARROW)
-// 		g->rot_right = false;
-// 	return (0);
-// }
 
 // bool touch(float px,float py,t_game *game)
 // {
@@ -191,14 +138,13 @@ int	main(int argc, char **argv)
 	
 	game.map = &map;
 	game_init(&game);
+	rendering(&game);
 	mlx_hook(game.win, 17, 0, exiter, &game);
+	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
+	mlx_hook(game.win, 3, 1L << 1, key_release, &game);
 	
-
 	// mlx_loop_hook(game.mlx, render_frame, &game);
-	// mlx_hook(game.win, 2, 1L << 0, key_press, &game);
-	// mlx_hook(game.win, 3, 1L << 1, key_release, &game);
 
-	
 	mlx_loop(game.mlx);
 	ft_gc(0, 'f');
 	return (0);

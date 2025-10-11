@@ -1,0 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/11 09:09:33 by mbenjbar          #+#    #+#             */
+/*   Updated: 2025/10/11 10:12:20 by mbenjbar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../header.h"
+
+void    normalize(double *angle)
+{
+    if (angle)
+    {
+        (*angle) = fmod(*angle, 2 * M_PI);
+	    if ((*angle) < 0)
+		    (*angle) += 2 * M_PI;
+    }
+}
+
+void    draw_angle(t_game *game)
+{
+    double  projection_dis;
+    
+    projection_dis = (WINDOW_WIDTH / 2) / tan(game->fov / 2);
+    game->wall_distance = get_dist(game);
+    game->height_wall = (TILE_SIZE / game->wall_distance) * projection_dis;
+    
+}
+
+void    rendering(t_game *game)
+{
+    double  angle_diff;
+
+    if(game->img)
+        mlx_destroy_image(game->mlx, game->img);
+    game->img = mlx_new_image(game->mlx, WINDOW_HEIGHT, WINDOW_HEIGHT);
+    if (game->img == NULL)
+        error_exit("failed to get new image", game);
+    game->data_addr = mlx_get_data_addr(game->img, &game->bpp,
+        &game->line_len, &game->endian);
+    game->current_column = 0;
+    game->current_angle = game->angle - (game->fov / 2);
+    angle_diff = game->fov / WINDOW_WIDTH;
+    while (game->current_column < WINDOW_WIDTH)
+    {
+        normalize(&game->current_angle);
+        draw_angle(game);
+        game->current_angle += angle_diff;
+        game->current_column++;
+    }
+    mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
+}

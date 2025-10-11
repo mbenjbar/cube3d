@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:59:43 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/11 10:25:39 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,6 @@ typedef	struct s_distance
 	double	x_verti_step;
 	double	verti_hit_y;
 	double	y_verti_step;
-	
-	double	ahx;
-	double	ahy;
-	double	avx;
-	double	avy;
 } t_distance;
 
 
@@ -109,25 +104,24 @@ typedef struct s_game
 {
 	void		*mlx;
 	void 		*win;
-	int			win_width;
-	int			win_height;
-	void		*img;
 	t_map 		*map;
 	char		**grid;
 	int			map_height;
 	double		player_x;
 	double		player_y;
 	double		angle;
+	double		current_angle;
+	double		current_column;
 	double		fov;
 	double		rotation_angle;
 	double		wall_distance;
 	t_distance	*distance;
 	double		height_wall;
+	void		*img;
     char    	*data_addr;
     int     	bpp;
     int     	line_len;
     int     	endian;
-	double		plane_y;
 	int  		key_up;
     int  		key_down;
     int  		key_left;
@@ -135,15 +129,11 @@ typedef struct s_game
     int  		rot_left;
     int  		rot_right;
 	t_texture	textures[4];
-	
-	void		*wall_no;
-	void		*wall_so;
-	void		*wall_we;
-	void		*wall_ea;
 
-	double dir_x; // Player direction vector (for raycasting)
+	double 		dir_x;
 	double		dir_y;
-	double plane_x; // 2D camera plane
+	double 		plane_x;
+	double		plane_y;
 }				t_game;
 
 /******  Splits  ****** */
@@ -201,9 +191,14 @@ void	image_failed_to_load(t_game *game);
 void	load_images(t_game *game, t_map *map);
 /******  LOAD_IMAGES ****** */
 void	init_game(t_game *game, t_map *map);
-void	error_exit(char *msg, t_game *game);
+
 
 
 /******  Raycasting Simo   ****** */
 void    game_init(t_game *game);
+void	error_exit(char *msg, t_game *game);
+void    rendering(t_game *game);
+double  get_dist(t_game *game);
+int		key_press(int key, void *param);
+int		key_release(int key, void *param);
 #endif
