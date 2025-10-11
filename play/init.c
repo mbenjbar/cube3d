@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 20:35:01 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/11 09:51:03 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/11 10:43:01 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void    texture_addr_loading(t_game *game)
             &game->textures[2].width, &game->textures[2].height);
     game->textures[3].textu = mlx_xpm_file_to_image(game->mlx, game->map->no,
             &game->textures[3].width, &game->textures[3].height);
-	if (!game->textures[0].textu || !game->textures[1].textu
-		|| !game->textures[2].textu || !game->textures[3].textu)
-	{
-        error_exit("Error\nloading texture failure", game);
-	}
+    if (!game->textures[0].textu || !game->textures[1].textu
+      || !game->textures[2].textu || !game->textures[3].textu)
+    {
+          error_exit("loading texture failure", game);
+    }
     i = 0;
     while (i < 4)
     {
@@ -42,13 +42,13 @@ static void    texture_addr_loading(t_game *game)
 static double  handle_direction(char direct)
 {
     if (direct == 'E')
-		return (0);
-    if (direct == 'S')
-		return (90 * (M_PI / 180));
+		  return (0);
+    if (direct == 'N')
+		  return (90 * (M_PI / 180));
     if (direct == 'W')
-		return (180 * (M_PI / 180));
+		  return (180 * (M_PI / 180));
     else
-		return (270 * (M_PI / 180));
+		  return (270 * (M_PI / 180));
 }
 
 void    game_init(t_game *game)
@@ -58,9 +58,7 @@ void    game_init(t_game *game)
     game->player_x = game->map->player_x * TILE_SIZE;
     game->player_y = game->map->player_y * TILE_SIZE;
     game->grid = game->map->map_grid;
-    game->map_height = 0;
-    while (game->grid[game->map_height])
-        game->map_height++;
+    game->map_height = game->map->map_height;
     game->angle = handle_direction(game->map->player_dir);
     game->distance = ft_gc(sizeof(t_distance), 'm');
     game->mlx = mlx_init();
