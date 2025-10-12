@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 20:35:01 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/11 10:43:01 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:55:41 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,14 @@ static double  handle_direction(char direct)
 void    game_init(t_game *game)
 {
     game->fov = 70 * (M_PI / 180);
-    game->rotation_angle = 0.8 * (M_PI / 180);
-    game->player_x = game->map->player_x * TILE_SIZE;
-    game->player_y = game->map->player_y * TILE_SIZE;
+    game->rot_angle = 0.8 * (M_PI / 180);
+    game->p_x = game->map->player_x * TILE_SIZE;
+    game->p_y = game->map->player_y * TILE_SIZE;
     game->grid = game->map->map_grid;
     game->map_height = game->map->map_height;
+    game->map_width = game->map->map_width;
     game->angle = handle_direction(game->map->player_dir);
-    game->distance = ft_gc(sizeof(t_distance), 'm');
+    game->dist = ft_gc(sizeof(t_distance), 'm');
     game->mlx = mlx_init();
     texture_addr_loading(game);
     game->win = mlx_new_window(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3D");

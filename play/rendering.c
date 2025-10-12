@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 09:09:33 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/11 11:23:06 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/12 18:06:30 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ void    draw_angle(t_game *game)
     
     projection_dis = (WINDOW_WIDTH / 2) / tan(game->fov / 2);
     game->wall_distance = get_dist(game);
-    game->wall_distance = game->wall_distance * cos(game->current_angle - game->angle);
+    game->wall_distance = game->wall_distance * cos(game->cur_angle - game->angle); // cos(x) = cos(-x)
     game->height_wall = (TILE_SIZE / game->wall_distance) * projection_dis;
+    
 }
 
 void    rendering(t_game *game)
@@ -43,15 +44,15 @@ void    rendering(t_game *game)
         error_exit("failed to get new image", game);
     game->data_addr = mlx_get_data_addr(game->img, &game->bpp,
         &game->line_len, &game->endian);
-    game->current_column = 0;
-    game->current_angle = game->angle - (game->fov / 2);
+    game->cur_column = 0;
+    game->cur_angle = game->angle - (game->fov / 2);
     angle_diff = game->fov / WINDOW_WIDTH;
-    while (game->current_column < WINDOW_WIDTH)
+    while (game->cur_column < WINDOW_WIDTH)
     {
-        normalize(&game->current_angle);
+        normalize(&game->cur_angle);
         draw_angle(game);
-        game->current_angle += angle_diff;
-        game->current_column++;
+        game->cur_angle += angle_diff;
+        game->cur_column++;
     }
     mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
 }

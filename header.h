@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/11 10:25:39 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/12 19:54:43 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,15 @@ typedef struct s_map
 
 typedef	struct s_distance
 {
-	double	hori_hit_x;
-	double	x_hori_step;
-	double	hori_hit_y;
-	double	y_hori_step;
+	double	h_hitx;
+	double	xh_step;
+	double	h_hity;
+	double	yh_step;
 
-	double	verti_hit_x;
-	double	x_verti_step;
-	double	verti_hit_y;
-	double	y_verti_step;
+	double	v_hitx;
+	double	xv_step;
+	double	v_hity;
+	double	yv_step;
 } t_distance;
 
 
@@ -107,15 +107,16 @@ typedef struct s_game
 	t_map 		*map;
 	char		**grid;
 	int			map_height;
-	double		player_x;
-	double		player_y;
+	int			map_width;
+	double		p_x;
+	double		p_y;
 	double		angle;
-	double		current_angle;
-	double		current_column;
+	double		cur_angle;
+	double		cur_column;
 	double		fov;
-	double		rotation_angle;
+	double		rot_angle;
 	double		wall_distance;
-	t_distance	*distance;
+	t_distance	*dist;
 	double		height_wall;
 	void		*img;
     char    	*data_addr;
@@ -201,4 +202,8 @@ void    rendering(t_game *game);
 double  get_dist(t_game *game);
 int		key_press(int key, void *param);
 int		key_release(int key, void *param);
+int 	up(double angle);
+int 	down(double angle);
+int 	right(double angle);
+int 	left(double angle);
 #endif
