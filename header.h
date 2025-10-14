@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/12 19:54:43 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:01:42 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ typedef struct s_game
     int  		rot_left;
     int  		rot_right;
 	t_texture	textures[4];
+	int			flag; //1 if horizontal closer
 
 	double 		dir_x;
 	double		dir_y;
@@ -199,11 +200,13 @@ void	init_game(t_game *game, t_map *map);
 void    game_init(t_game *game);
 void	error_exit(char *msg, t_game *game);
 void    rendering(t_game *game);
-double  get_dist(t_game *game);
+void  get_dist(t_game *game);
+void    final_distance(t_game *game);
 int		key_press(int key, void *param);
 int		key_release(int key, void *param);
 int 	up(double angle);
 int 	down(double angle);
 int 	right(double angle);
 int 	left(double angle);
+
 #endif

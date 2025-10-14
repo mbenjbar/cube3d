@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 10:15:05 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/12 19:58:04 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:01:37 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,25 @@ void    verti_first_inter(t_game *game)
     game->dist->v_hitx -= left(game->cur_angle);
 }
 
-double  get_dist(t_game *game)
+void  get_dist(t_game *game)
 {
-    if (game->cur_angle != M_PI && game->cur_angle != 0)
-        hori_first_inter(game);
-    if (game->cur_angle != 0.5 * M_PI && game->cur_angle != 1.5 * M_PI)
+    if (game->cur_angle == M_PI || game->cur_angle == 0)
+    {
         verti_first_inter(game);
+        game->dist->h_hitx = game->p_x;
+        game->dist->h_hity = game->p_y;
+    }
+    else if (game->cur_angle != 0.5 * M_PI || game->cur_angle != 1.5 * M_PI)
+    {
+        hori_first_inter(game);
+        game->dist->v_hitx = game->p_x;
+        game->dist->v_hitx = game->p_y;
+    }
+    else
+    {
+        verti_first_inter(game);
+        hori_first_inter(game);
+    }
     find_wall(game);
     final_distance(game);
 }

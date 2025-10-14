@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 09:09:33 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/12 18:06:30 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:03:13 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void    draw_angle(t_game *game)
     double  projection_dis;
     
     projection_dis = (WINDOW_WIDTH / 2) / tan(game->fov / 2);
-    game->wall_distance = get_dist(game);
+    get_dist(game);
     game->wall_distance = game->wall_distance * cos(game->cur_angle - game->angle); // cos(x) = cos(-x)
     game->height_wall = (TILE_SIZE / game->wall_distance) * projection_dis;
+    draw(game);
     
 }
 
