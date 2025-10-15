@@ -6,11 +6,11 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 19:46:15 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/14 19:56:45 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:51:11 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../header.h"
 
 void    final_distance(t_game *game)
 {

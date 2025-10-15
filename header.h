@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/16 00:25:11 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:50:56 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,6 +204,7 @@ void	error_exit(char *msg, t_game *game);
 void    rendering(t_game *game);
 void  get_dist(t_game *game);
 void    final_distance(t_game *game);
+void    draw(t_game *game);
 int		key_press(int key, void *param);
 int		key_release(int key, void *param);
 int 	up(double angle);

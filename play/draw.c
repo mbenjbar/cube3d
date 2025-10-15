@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:06:11 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/16 00:46:01 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:52:05 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ unsigned int get_color(t_game *game, int row)
 	return (*(unsigned int *)color);
 }
 
-int get_column(t_game *game)
+void get_column(t_game *game)
 {
     int index;
 
@@ -44,7 +44,7 @@ int get_column(t_game *game)
 
 int get_index(t_game *game)
 {
-    game->textures->column = get_column(game);
+    get_column(game);
     if (up(game->cur_angle) && game->flag)
         return (3);
     else if (down(game->cur_angle) && game->flag)
