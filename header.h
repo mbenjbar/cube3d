@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/14 21:01:42 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 00:25:11 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ typedef struct s_map
 	char		*ea;
 	int has_no, has_so, has_we, has_ea;
 	int has_floor, has_ceiling;
-	int floor_r, floor_g, floor_b;
-	int ceiling_r, ceiling_g, ceiling_b;
+	unsigned int	floor_color;
+	unsigned int	ceiling_color;
 }				t_map;
 
 typedef	struct s_distance
@@ -98,6 +98,8 @@ typedef struct s_texture
 	int		height;
 	int		lenght;
 	int		bpp;
+	int		index;
+	int		column;
 }		t_texture;
 
 typedef struct s_game
@@ -112,7 +114,7 @@ typedef struct s_game
 	double		p_y;
 	double		angle;
 	double		cur_angle;
-	double		cur_column;
+	int			cur_column;
 	double		fov;
 	double		rot_angle;
 	double		wall_distance;

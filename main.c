@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/11 09:43:38 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/15 22:01:00 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,8 @@ int	main(int argc, char **argv)
 	printf("%s\n", map.no);
 	printf("%s\n", map.so);
 	printf("%s\n", map.we);
-	printf("%d\n", map.floor_b);
-	printf("%d\n", map.floor_g);
-	printf("%d\n", map.floor_r);
-	printf("%d\n", map.ceiling_b);
-	printf("%d\n", map.ceiling_g);
-	printf("%d\n", map.ceiling_r);
+	printf("%d\n", map.floor_color);
+	printf("%d\n", map.ceiling_color);
 	printf("%d\n", map.map_width);
 	printf("%c\n", map.player_dir);
 	printf("%f\n", map.player_x);

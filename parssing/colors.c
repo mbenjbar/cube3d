@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:10 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/11 10:34:56 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/15 22:00:18 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ int	parse_rgb(char *line, int *r, int *g, int *b)
 	return (1);
 }
 
+unsigned int	rgb_to_hex(int r, int g, int b)
+{
+	if (r < 0) r = 0;
+	if (r > 255) r = 255;
+	if (g < 0) g = 0;
+	if (g > 255) g = 255;
+	if (b < 0) b = 0;
+	if (b > 255) b = 255;
+	return ((r << 16) | (g << 8) | b);
+}
+
 void	set_floor_color(t_map *map, char *line)
 {
 	int	r;
@@ -43,9 +54,7 @@ void	set_floor_color(t_map *map, char *line)
 		error_exit("Duplicate floor color", NULL);
 	if (!parse_rgb(line, &r, &g, &b))
 		error_exit("Invalid floor color", NULL);
-	map->floor_r = r;
-	map->floor_g = g;
-	map->floor_b = b;
+	map->floor_color = rgb_to_hex(r, g, b);
 }
 
 void	set_ceiling_color(t_map *map, char *line)
@@ -58,7 +67,5 @@ void	set_ceiling_color(t_map *map, char *line)
 		error_exit("Duplicate ceiling color", NULL);
 	if (!parse_rgb(line, &r, &g, &b))
 		error_exit("Invalid ceiling color", NULL);
-	map->ceiling_r = r;
-	map->ceiling_g = g;
-	map->ceiling_b = b;
+	map->ceiling_color = rgb_to_hex(r, g, b);
 }
