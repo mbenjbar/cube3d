@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 10:06:11 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/16 00:52:05 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 22:00:57 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int get_index(t_game *game)
     else if (right(game->cur_angle) && !game->flag)
         return (0);
     else
-        return (1);
+        return (2);
 }
 
 void    put_pix(t_game *game, int i, unsigned int color)
 {
     char *address;
 
-    address = game->data_addr + (game->cur_column * game->line_len) + (i * game->bpp);
+    address = game->data_addr + (i * game->line_len) + (game->cur_column * (game->bpp / 8));
     *(unsigned int *)address = color;
 }
 

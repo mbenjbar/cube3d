@@ -6,82 +6,11 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:17 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/15 22:01:00 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 21:28:53 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-// bool touch(float px,float py,t_game *game)
-// {
-// 	int x;
-// 	int y;
-// 	x = (int)px/TILE_SIZE;
-// 	y = (int)py/TILE_SIZE;
-	 
-// 	if(game->map.map_grid[y][x] == '1')
-// 		return true;
-// 	return false;
-// }
-// void move_rotate_player(t_game *game)
-// {
-// 	float new_x, new_y;
-// 	game->move_speed = 0.01;
-// 	game->angle_speed = 0.01;
-
-// 	if (game->rot_left) game->angle -= game->angle_speed;
-// 	if (game->rot_right) game->angle += game->angle_speed;
-// 	if (game->angle < 0) game->angle += 2 * M_PI;
-// 	if (game->angle >= 2 * M_PI) game->angle -= 2 * M_PI;
-// 	if (game->key_left)
-// 	{
-// 		new_x = game->map.player_x - sin(game->angle) * game->move_speed;
-// 		new_y = game->map.player_y + cos(game->angle) * game->move_speed;
-// 	}
-// 	else if (game->key_right)				
-// 	{
-// 		new_x = game->map.player_x + sin(game->angle) * game->move_speed;
-// 		new_y = game->map.player_y - cos(game->angle) * game->move_speed;
-// 	}
-// 	else if (game->key_up)
-// 	{
-// 		new_x = game->map.player_x - cos(game->angle) * game->move_speed;
-// 		new_y = game->map.player_y - sin(game->angle) * game->move_speed;
-// 	}
-// 	else if (game->key_down)
-// 	{
-// 		new_x = game->map.player_x + cos(game->angle) * game->move_speed;
-// 		new_y = game->map.player_y + sin(game->angle) * game->move_speed;
-// 	}
-// 	else
-// 	{
-// 		return; 
-// 	}
-
-// 	if (game->map.map_grid[(int)new_y][(int)new_x] == '0')
-// 	{
-// 		game->map.player_x = new_x;
-// 		game->map.player_y = new_y;
-// 	}
-	
-// 	mlx_clear_window(game->mlx, game->win);
-// }
-// int	render_frame(t_game *game)
-// {
-	
-// 	game->cos_angle = cos(game->angle);
-// 	game->sin_angle = sin(game->angle);
-// 	game->ray_x = game->player_x;
-// 	game->ray_y = game->player_y;
-	
-	
-
-// 	move_rotate_player(game);
-
-// 	draw_map_and_player(game, &game->map);
-// 	mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
-// 	return (0);
-// }
 
 int	exiter(void	*param)
 {

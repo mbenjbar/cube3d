@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 10:15:05 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/14 21:01:37 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/16 21:50:13 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,15 @@ void  get_dist(t_game *game)
     if (game->cur_angle == M_PI || game->cur_angle == 0)
     {
         verti_first_inter(game);
+        game->dist->xh_step = 0;
+        game->dist->yh_step = 0;
         game->dist->h_hitx = game->p_x;
         game->dist->h_hity = game->p_y;
     }
-    else if (game->cur_angle != 0.5 * M_PI || game->cur_angle != 1.5 * M_PI)
+    else if (game->cur_angle == 0.5 * M_PI || game->cur_angle == 1.5 * M_PI)
     {
+        game->dist->xv_step = 0;
+        game->dist->yv_step = 0;
         hori_first_inter(game);
         game->dist->v_hitx = game->p_x;
         game->dist->v_hitx = game->p_y;
