@@ -30,14 +30,14 @@ int found(t_game *game, double x, double y)
 
 void    find_wall(t_game *game)
 {
-    while (1 && game->cur_angle != M_PI && game->cur_angle != 0)
+    while (game->dist->xh_step != 0 && game->dist->yh_step != 0)
     {
         if (found(game, game->dist->h_hitx, game->dist->h_hity))
             break;
         game->dist->h_hitx += game->dist->xh_step;
         game->dist->h_hity += game->dist->yh_step;
     }
-    while (1 && game->cur_angle != 0.5 * M_PI && game->cur_angle != 1.5 * M_PI)
+    while (game->dist->xv_step != 0 && game->dist->yv_step != 0)
     {
         if (found(game, game->dist->v_hitx, game->dist->v_hity))
             break;
@@ -66,7 +66,7 @@ void    verti_first_inter(t_game *game)
 {
     game->dist->v_hitx = floor(game->p_x / TILE_SIZE) * TILE_SIZE;
     game->dist->v_hitx += TILE_SIZE * right(game->cur_angle);
-    game->dist->v_hity = game->p_x +
+    game->dist->v_hity = game->p_y +
         (game->dist->v_hitx - game->p_x) * tan(game->cur_angle);
     game->dist->xv_step = TILE_SIZE;
     game->dist->yv_step = fabs(TILE_SIZE * tan(game->cur_angle));
@@ -79,27 +79,29 @@ void    verti_first_inter(t_game *game)
 
 void  get_dist(t_game *game)
 {
-    if (game->cur_angle == M_PI || game->cur_angle == 0)
-    {
-        verti_first_inter(game);
-        game->dist->xh_step = 0;
-        game->dist->yh_step = 0;
-        game->dist->h_hitx = game->p_x;
-        game->dist->h_hity = game->p_y;
-    }
-    else if (game->cur_angle == 0.5 * M_PI || game->cur_angle == 1.5 * M_PI)
-    {
-        game->dist->xv_step = 0;
-        game->dist->yv_step = 0;
-        hori_first_inter(game);
-        game->dist->v_hitx = game->p_x;
-        game->dist->v_hitx = game->p_y;
-    }
-    else
-    {
-        verti_first_inter(game);
-        hori_first_inter(game);
-    }
+    // if (game->cur_angle == M_PI || game->cur_angle == 0)
+    // {
+    //     verti_first_inter(game);
+    //     game->dist->xh_step = 0;
+    //     game->dist->yh_step = 0;
+    //     game->dist->h_hitx = game->p_x;
+    //     game->dist->h_hity = game->p_y;
+    // }
+    // else if (game->cur_angle == 0.5 * M_PI || game->cur_angle == 1.5 * M_PI)
+    // {
+    //     hori_first_inter(game);
+    //     game->dist->xv_step = 0;
+    //     game->dist->yv_step = 0;
+    //     game->dist->v_hitx = game->p_x;
+    //     game->dist->v_hity = game->p_y;
+    // }
+    // else
+    // {
+    //     verti_first_inter(game);
+    //     hori_first_inter(game);
+    // }
+    verti_first_inter(game);
+    hori_first_inter(game);
     find_wall(game);
     final_distance(game);
 }

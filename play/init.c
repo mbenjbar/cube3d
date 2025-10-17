@@ -53,7 +53,7 @@ static double  handle_direction(char direct)
 
 void    game_init(t_game *game)
 {
-    game->fov = 70 * (M_PI / 180);
+    game->fov = 60 * (M_PI / 180);
     game->rot_angle = 0.8 * (M_PI / 180);
     game->p_x = game->map->player_x * TILE_SIZE;
     game->p_y = game->map->player_y * TILE_SIZE;

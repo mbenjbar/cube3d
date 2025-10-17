@@ -26,8 +26,9 @@ void    draw_angle(t_game *game)
 {
     double  projection_dis;
     
-    projection_dis = (WINDOW_WIDTH / 2) / tan(game->fov / 2);
     get_dist(game);
+    projection_dis = (WINDOW_WIDTH / 2) / tan(game->fov / 2);
+    printf("%lf\n", game->wall_distance);
     game->wall_distance = game->wall_distance * cos(game->cur_angle - game->angle); // cos(x) = cos(-x)
     game->height_wall = (TILE_SIZE / game->wall_distance) * projection_dis;
     draw(game);
@@ -39,7 +40,7 @@ void    rendering(t_game *game)
 
     if(game->img)
         mlx_destroy_image(game->mlx, game->img);
-    game->img = mlx_new_image(game->mlx, WINDOW_HEIGHT, WINDOW_HEIGHT);
+    game->img = mlx_new_image(game->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
     if (game->img == NULL)
         error_exit("failed to get new image", game);
     game->data_addr = mlx_get_data_addr(game->img, &game->bpp,

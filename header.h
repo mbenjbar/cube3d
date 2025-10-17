@@ -98,8 +98,6 @@ typedef struct s_texture
 	int		height;
 	int		lenght;
 	int		bpp;
-	int		index;
-	int		column;
 }		t_texture;
 
 typedef struct s_game
@@ -132,12 +130,9 @@ typedef struct s_game
     int  		rot_left;
     int  		rot_right;
 	t_texture	textures[4];
+	int			text_column;
+	int			text_index;
 	int			flag; //1 if horizontal closer
-
-	double 		dir_x;
-	double		dir_y;
-	double 		plane_x;
-	double		plane_y;
 }				t_game;
 
 /******  Splits  ****** */
