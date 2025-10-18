@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/16 00:50:56 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/18 21:01:03 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 #include <stdbool.h>
 
-#define TILE_SIZE 200
+#define TILE_SIZE 60
 # define M_PI 3.14159265358979323846
 # define ESC_KEY 65307
 # define W 119
@@ -33,8 +33,8 @@
 # define SPACE 32
 #define LEFT_ARROW  65361   // XK_Left
 #define RIGHT_ARROW 65363   // XK_Right
-# define WINDOW_WIDTH 1600
-# define WINDOW_HEIGHT 800
+# define WINDOW_WIDTH 1400
+# define WINDOW_HEIGHT 600
 
 
 typedef struct s_state
@@ -58,7 +58,6 @@ typedef struct s_map
 	int			line_count; // line count of whole map file
 	int			grid_lines_count; //lines count of the pure map
 	int			map_width; //width of pure map
-	int			map_height; //height of pure map
 	int			start_of_map;
 	char		**map_two_d; //this the entire map file
 	char		**map_grid; //this is the pure map
@@ -197,7 +196,9 @@ void	init_game(t_game *game, t_map *map);
 void    game_init(t_game *game);
 void	error_exit(char *msg, t_game *game);
 void    rendering(t_game *game);
-void  get_dist(t_game *game);
+void    hori_first_inter(t_game *game);
+void    verti_first_inter(t_game *game);
+void    find_wall(t_game *game);
 void    final_distance(t_game *game);
 void    draw(t_game *game);
 int		key_press(int key, void *param);
