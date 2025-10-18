@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:50:48 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/18 21:01:03 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:02:19 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 #define RIGHT_ARROW 65363   // XK_Right
 # define WINDOW_WIDTH 1400
 # define WINDOW_HEIGHT 600
+# define STEP 8
 
 
 typedef struct s_state
@@ -55,12 +56,12 @@ typedef struct s_gc
 
 typedef struct s_map
 {
-	int			line_count; // line count of whole map file
-	int			grid_lines_count; //lines count of the pure map
-	int			map_width; //width of pure map
+	int			line_count;
+	int			grid_lines_count;
+	int			map_width;
 	int			start_of_map;
-	char		**map_two_d; //this the entire map file
-	char		**map_grid; //this is the pure map
+	char		**map_two_d;
+	char		**map_grid;
 	float		player_x;
 	float		player_y;
 	char		player_dir;
@@ -183,7 +184,6 @@ void	draw_map_and_player(t_game *game, t_map *map);
 void	draw_tile(t_game *g, int x, int y, int color);
 void	draw_player(t_game *game, t_map *map);
 void	put_pixel(t_game *g, int x, int y, int color);
-int	render_frame(t_game *game);
 /******  LOAD_IMAGES ****** */
 void	image_failed_to_load(t_game *game);
 void	load_images(t_game *game, t_map *map);
@@ -196,6 +196,7 @@ void	init_game(t_game *game, t_map *map);
 void    game_init(t_game *game);
 void	error_exit(char *msg, t_game *game);
 void    rendering(t_game *game);
+void    normalize(double *angle);
 void    hori_first_inter(t_game *game);
 void    verti_first_inter(t_game *game);
 void    find_wall(t_game *game);
@@ -203,6 +204,8 @@ void    final_distance(t_game *game);
 void    draw(t_game *game);
 int		key_press(int key, void *param);
 int		key_release(int key, void *param);
+int 	render_frame(void *param);
+int 	found(t_game *game, int x, int y);
 int 	up(double angle);
 int 	down(double angle);
 int 	right(double angle);
