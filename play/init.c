@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 20:35:01 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/28 15:02:12 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:29:12 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void    texture_addr_loading(t_game *game)
 static double  handle_direction(char direct)
 {
 	if (direct == 'N')
-		return (270 * (M_PI / 180));
-	if (direct == 'S')
 		return (90 * (M_PI / 180));
+	if (direct == 'S')
+		return (270 * (M_PI / 180));
 	if (direct == 'E')
 		return (0);
 	else

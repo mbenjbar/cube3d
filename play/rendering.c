@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 09:09:33 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/28 15:04:06 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:29:40 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ void    rendering(t_game *game)
     game->data_addr = mlx_get_data_addr(game->img, &game->bpp,
         &game->line_len, &game->endian);
     game->cur_column = 0;
-    game->cur_angle = game->angle - (game->fov / 2);
+    game->cur_angle = game->angle + (game->fov / 2);
     angle_diff = game->fov / WINDOW_WIDTH;
     while (game->cur_column < WINDOW_WIDTH)
     {
         normalize(&game->cur_angle);
         draw_angle(game);
-        game->cur_angle += angle_diff;
+        game->cur_angle -= angle_diff;
         game->cur_column++;
     }
     mlx_put_image_to_window(game->mlx, game->win, game->img, 0, 0);
