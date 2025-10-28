@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 21:26:57 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/18 23:32:02 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:15:53 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void vertical(t_game *game, double *x, double *y)
 	if (game->key_up == true)
 	{
 		*x += STEP * cos(game->angle);
-		*y -= STEP * sin(game->angle);
+		*y += STEP * sin(game->angle);
 	}
 	if (game->key_down == true)
 	{
 		*x -= STEP * cos(game->angle);
-		*y += STEP * sin(game->angle);
+		*y -= STEP * sin(game->angle);
 	}
 }
 
@@ -30,12 +30,12 @@ void horizontal(t_game *game, double *x, double *y)
 {
 	if (game->key_left == true)
 	{
-		*x -= STEP * sin(game->angle);
+		*x += STEP * sin(game->angle);
 		*y -= STEP * cos(game->angle);
 	}
 	if (game->key_right == true)
 	{
-		*x += STEP * sin(game->angle);
+		*x -= STEP * sin(game->angle);
 		*y += STEP * cos(game->angle);
 	}
 }
@@ -43,9 +43,9 @@ void horizontal(t_game *game, double *x, double *y)
 void    rotation(t_game *game)
 {
     if (game->rot_right == true)
-        game->angle -= game->rot_angle;
-    if (game->rot_left == true)
         game->angle += game->rot_angle;
+    if (game->rot_left == true)
+        game->angle -= game->rot_angle;
 }
 
 int render_frame(void *param)

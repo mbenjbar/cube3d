@@ -6,7 +6,7 @@
 /*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 10:15:05 by mbenjbar          #+#    #+#             */
-/*   Updated: 2025/10/18 21:01:18 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:07:31 by mbenjbar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void    hori_first_inter(t_game *game)
     game->dist->h_hity = floor(game->p_y / TILE_SIZE) * TILE_SIZE;
     if (down(game->cur_angle))
         game->dist->h_hity += TILE_SIZE;
-    game->dist->h_hitx = game->p_x - ((game->dist->h_hity - game->p_y) / tan(game->cur_angle));
+    game->dist->h_hitx = game->p_x + ((game->dist->h_hity - game->p_y) / tan(game->cur_angle));
     game->dist->yh_step = TILE_SIZE;
     game->dist->xh_step = TILE_SIZE / tan(game->cur_angle);
     if (up(game->cur_angle))
         game->dist->yh_step = -game->dist->yh_step;
-    if (right(game->cur_angle))
-        game->dist->xh_step = fabs(game->dist->xh_step);
-    else
+    if (left(game->cur_angle))
         game->dist->xh_step = -fabs(game->dist->xh_step);
+    else
+        game->dist->xh_step = fabs(game->dist->xh_step);
     if (up(game->cur_angle))
         game->dist->h_hity--;
 }
@@ -69,7 +69,7 @@ void    verti_first_inter(t_game *game)
     game->dist->v_hitx = floor(game->p_x / TILE_SIZE) * TILE_SIZE;
     if (right (game->cur_angle))
         game->dist->v_hitx += TILE_SIZE;
-    game->dist->v_hity = game->p_y - ((game->dist->v_hitx - game->p_x) * tan(game->cur_angle));
+    game->dist->v_hity = game->p_y + ((game->dist->v_hitx - game->p_x) * tan(game->cur_angle));
     game->dist->xv_step = TILE_SIZE;
     game->dist->yv_step = TILE_SIZE * tan(game->cur_angle);
     if (left(game->cur_angle))
