@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parssing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbenjbar <mbenjbar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imiqor <imiqor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 00:51:03 by imiqor            #+#    #+#             */
-/*   Updated: 2025/10/10 22:47:06 by mbenjbar         ###   ########.fr       */
+/*   Updated: 2025/11/01 18:53:51 by imiqor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"../header.h"
+#include "../header.h"
 
-void parssing(t_map* map, int argc,char** argv)
+void	parssing(t_map *map, int argc, char **argv)
 {
 	check_argc(argc);
 	check_extention(argv[1]);
@@ -44,21 +44,20 @@ void	check_if_file_exist(char *argv)
 	if (fd < 0)
 		error_exit("file does not exist", NULL);
 	close(fd);
-	return;
+	return ;
 }
+
 void	check_extention(char *argv)
 {
 	int		len;
-	char	*tmp;
 
 	len = ft_strlen(argv);
-	tmp = ft_strrchr(argv, '/');
-	if ((ft_strncmp(argv + len - 4, ".cub", 4)) || (ft_strlen(argv) <= 4)
-		|| (tmp && ft_strlen(ft_strrchr(tmp, '/')) <= 5))
+	if ((ft_strncmp(argv + len - 4, ".cub", 4)) || (ft_strlen(argv) <= 4))
 	{
 		error_exit("bad extension", NULL);
 	}
 }
+
 void	check_argc(int argc)
 {
 	if (argc != 2)
