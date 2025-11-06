@@ -13,7 +13,7 @@
 #ifndef HEADER_H
 # define HEADER_H
 # include "./libft/libft.h"
-# include "./minilibx-linux/mlx.h"
+# include <mlx.h>
 # include "./parssing/get_next_line/get_next_line.h"
 # include <errno.h>
 # include <fcntl.h>
